@@ -5,6 +5,10 @@ import matplotlib.pyplot as plt
 import numpy as np
 import streamlit as st
 
+st.title("Desafio 1 – Contagem de Parafusos")
+st.subheader("Cecilia Giuffra")
+st.write("Processamento Digital de Imagens")
+
 uploaded_file = st.file_uploader(
     "Escolha uma imagem",
     type=["jpg", "jpeg", "png"]
