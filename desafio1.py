@@ -314,7 +314,22 @@ imagens = [
 ]
 
 for imagem in imagens:
+    #img = cv2.imread(imagem)
+  
+    print("Tentando abrir:", imagem)
+
     img = cv2.imread(imagem)
+
+    print("img =", img)
+
+    if img is None:
+        print("ERRO: não encontrou", imagem)
+        continue
+
+    print("OK")
+    
+
+  
     # --- Pipeline de processamento de imagem ---
     binaria_result = binarizacao_otsu(img)
     limpa_result, eroded_result, eroded_close_result = morfológicas(binaria_result)
