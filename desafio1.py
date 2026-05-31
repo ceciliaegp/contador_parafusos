@@ -316,7 +316,7 @@ imagens = [
 for imagem in imagens:
     #img = cv2.imread(imagem)
   
-    st.write(("Tentando abrir:", imagem)
+    st.write("Tentando abrir:", imagem)
 
     img = cv2.imread(imagem)
 
