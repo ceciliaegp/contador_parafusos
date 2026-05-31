@@ -5,6 +5,11 @@ import matplotlib.pyplot as plt
 import numpy as np
 import streamlit as st
 
+uploaded_file = st.file_uploader(
+    "Escolha uma imagem",
+    type=["jpg", "jpeg", "png"]
+)
+
 def binarizacao_otsu(img):
   print("Binarização")
   img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
@@ -305,29 +310,37 @@ import cv2
 real = [8, 1, 4, 2, 10]
 
 detectado = []
+
+#comentado para upload
 #pegar images dos arquivos aqui do colab
-imagens = [
-    'images/img1.jpg',
-    'images/img2.jpg',
-    'images/img3.jpg',
-    'images/img4.jpg',
-    'images/img5.jpg'
-]
+# imagens = [
+#     'images/img1.jpg',
+#     'images/img2.jpg',
+#     'images/img3.jpg',
+#     'images/img4.jpg',
+#     'images/img5.jpg'
+# ]
 
-for imagem in imagens:
-    #img = cv2.imread(imagem)
-  
-    st.write("Tentando abrir:", imagem)
-    
-    img = cv2.imread(imagem)
-  
-    st.write("Imagem carregada:", img is not None)
+#for imagem in imagens:
 
-    if img is None:
-      st.error(f"Não encontrou {imagem}")
-      continue
+######### upload
+if uploaded_file is not None:
+    file_bytes = np.asarray(
+      bytearray(uploaded_file.read()),
+      dtype=np.uint8
+    )
 
-    st.write("Shape:", img.shape)
+    img = cv2.imdecode(file_bytes,cv2.IMREAD_COLOR)
+    st.image(img,channels="BGR",caption="Imagem enviada")
+
+########### fim upload
+
+  #comentado para upload
+    # img = cv2.imread(imagem)
+
+    # if img is None:
+    #   st.error(f"Não encontrou {imagem}")
+    #   continue
 
   
     # --- Pipeline de processamento de imagem ---
@@ -339,40 +352,48 @@ for imagem in imagens:
     contornos_debug(img, contours_debug_result, area_threshold_result)
     detectado_img = contornos_validos(img, valid_contours_result)
 
-    detectado.append(detectado_img)
+    #detectado.append(detectado_img) #upload
 
-print("detectado: ", detectado)
+#print("detectado: ", detectado) #upload
 
 #Métricas:
 
 import numpy as np
 
-real = [8, 1, 4, 2, 10]
+detectado_img = contornos_validos(img, valid_contours_result) #upload
 
-st.write("real =", real)
-st.write("detectado =", detectado)
+st.title("Contador de Parafusos")
 
-st.write("len(real) =", len(real))
-st.write("len(detectado) =", len(detectado))
+st.success(f"Parafusos encontrados: {detectado_img}") #upload
 
-erros_abs = np.abs(np.array(real) - np.array(detectado))
-erros_diff = np.array(detectado) - np.array(real) # Para calcular o Bias, sem abs
+st.image(img_contours,channels="RGB",caption="Parafusos detectados") #upload
 
-mae = np.mean(erros_abs)
+#comentado para upload:
 
-acertos = np.sum(np.array(real) == np.array(detectado))
+# erros_abs = np.abs(np.array(real) - np.array(detectado))
+# erros_diff = np.array(detectado) - np.array(real) # Para calcular o Bias, sem abs
 
-acuracia = (acertos /len(real)) * 100
+# mae = np.mean(erros_abs)
 
-erro_percentual = np.mean(erros_abs / np.array(real)) * 100
+# acertos = np.sum(np.array(real) == np.array(detectado))
 
-# Novas métricas
-rmse = np.sqrt(np.mean(erros_diff**2))
-bias = np.mean(erros_diff)
+# acuracia = (acertos /len(real)) * 100
 
-print("========== RESULTADOS ==========")
-print("MAE - Erro Médio Absoluto:", mae)
-print("RMSE - Raiz Quadrada do Erro Médio Quadrático:", round(rmse, 2))
-print("Bias - Tendência de Contagem (média do erro):", round(bias, 2))
-print("Acurácia:", round(acuracia,2), "%")
-print("Erro percentual médio:", round(erro_percentual,2),"%")
+# erro_percentual = np.mean(erros_abs / np.array(real)) * 100
+
+# st.write("Contagem real:", real)
+# st.write("Contagem detectada:", detectado)
+
+# st.write(f"MAE: {mae:.2f}")
+# st.write(f"Acurácia: {acuracia:.2f}%")
+
+# # Novas métricas
+# rmse = np.sqrt(np.mean(erros_diff**2))
+# bias = np.mean(erros_diff)
+
+# print("========== RESULTADOS ==========")
+# print("MAE - Erro Médio Absoluto:", mae)
+# print("RMSE - Raiz Quadrada do Erro Médio Quadrático:", round(rmse, 2))
+# print("Bias - Tendência de Contagem (média do erro):", round(bias, 2))
+# print("Acurácia:", round(acuracia,2), "%")
+# print("Erro percentual médio:", round(erro_percentual,2),"%")
