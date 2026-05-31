@@ -323,12 +323,11 @@ for imagem in imagens:
     st.write(("img =", img)
 
     if img is None:
-        st.error(("ERRO: não encontrou", imagem)
-        continue
+      st.error(f"Não encontrou {imagem}")
+      continue
 
-    print("OK")
+    print("OKKKKKKKKKKKKKKKKKKKKKKKKK")
     
-
   
     # --- Pipeline de processamento de imagem ---
     binaria_result = binarizacao_otsu(img)
