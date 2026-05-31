@@ -316,14 +316,14 @@ imagens = [
 for imagem in imagens:
     #img = cv2.imread(imagem)
   
-    print("Tentando abrir:", imagem)
+    st.write(("Tentando abrir:", imagem)
 
     img = cv2.imread(imagem)
 
-    print("img =", img)
+    st.write(("img =", img)
 
     if img is None:
-        print("ERRO: não encontrou", imagem)
+        st.write(("ERRO: não encontrou", imagem)
         continue
 
     print("OK")
