@@ -3,6 +3,7 @@
 import cv2
 import matplotlib.pyplot as plt
 import numpy as np
+import streamlit as st
 
 def binarizacao_otsu(img):
   print("Binarização")
