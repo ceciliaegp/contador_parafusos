@@ -318,17 +318,18 @@ for imagem in imagens:
     #img = cv2.imread(imagem)
   
     st.write("Tentando abrir:", imagem)
-
+    
     img = cv2.imread(imagem)
-
-   # st.write("img =", img)
+  
+    st.write("Imagem carregada:", img is not None)
 
     if img is None:
       st.error(f"Não encontrou {imagem}")
       continue
 
-    print("OKKKKKKKKKKKKKKKKKKKKKKKKK")
-    
+    st.write("Shape:", img.shape)
+
+    break
   
     # --- Pipeline de processamento de imagem ---
     binaria_result = binarizacao_otsu(img)
