@@ -301,7 +301,7 @@ def contornos_validos(img, valid_contours):
   return len(valid_contours)
 
 import cv2
-real = [8, 10, 10, 4]
+real = [8, 1, 4, 2, 10]
 
 detectado = []
 #pegar images dos arquivos aqui do colab
