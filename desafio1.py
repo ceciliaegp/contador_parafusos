@@ -360,13 +360,13 @@ if uploaded_file is not None:
 
 import numpy as np
 
-detectado_img = contornos_validos(img, valid_contours_result) #upload
-
-st.title("Contador de Parafusos")
-
-st.success(f"Parafusos encontrados: {detectado_img}") #upload
-
-st.image(img_contours,channels="RGB",caption="Parafusos detectados") #upload
+    detectado_img = contornos_validos(img, valid_contours_result) #upload
+    
+    st.title("Contador de Parafusos")
+    
+    st.success(f"Parafusos encontrados: {detectado_img}") #upload
+    
+    st.image(img_contours,channels="RGB",caption="Parafusos detectados") #upload
 
 #comentado para upload:
 
