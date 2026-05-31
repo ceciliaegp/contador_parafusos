@@ -360,9 +360,6 @@ if uploaded_file is not None:
     st.title("Contador de Parafusos")
     
     st.success(f"Parafusos encontrados: {detectado_img}") #upload
-    
-    st.image(img_contours,channels="RGB",caption="Parafusos detectados") #upload
-
 
 #Métricas:
 
