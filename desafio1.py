@@ -323,7 +323,7 @@ for imagem in imagens:
     st.write(("img =", img)
 
     if img is None:
-        st.write(("ERRO: não encontrou", imagem)
+        st.error(("ERRO: não encontrou", imagem)
         continue
 
     print("OK")
