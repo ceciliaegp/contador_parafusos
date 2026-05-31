@@ -320,7 +320,7 @@ for imagem in imagens:
 
     img = cv2.imread(imagem)
 
-    st.write(("img =", img)
+    st.write("img =", img)
 
     if img is None:
       st.error(f"Não encontrou {imagem}")
