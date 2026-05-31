@@ -329,7 +329,6 @@ for imagem in imagens:
 
     st.write("Shape:", img.shape)
 
-    break
   
     # --- Pipeline de processamento de imagem ---
     binaria_result = binarizacao_otsu(img)
@@ -349,6 +348,12 @@ print("detectado: ", detectado)
 import numpy as np
 
 real = [8, 1, 4, 2, 10]
+
+st.write("real =", real)
+st.write("detectado =", detectado)
+
+st.write("len(real) =", len(real))
+st.write("len(detectado) =", len(detectado))
 
 erros_abs = np.abs(np.array(real) - np.array(detectado))
 erros_diff = np.array(detectado) - np.array(real) # Para calcular o Bias, sem abs
