@@ -306,11 +306,11 @@ real = [8, 10, 10, 4]
 detectado = []
 #pegar images dos arquivos aqui do colab
 imagens = [
-    '/content/Cópia de img1.jpg',
-    '/content/Cópia de img2.jpg',
-    '/content/Cópia de img3.jpg',
-    '/content/Cópia de img4.jpg',
-    '/content/Cópia de img5.jpg'
+    'imagens/img1.jpg',
+    'imagens/img2.jpg',
+    'imagens/img3.jpg',
+    'imagens/img4.jpg',
+    'imagens/img5.jpg'
 ]
 
 for imagem in imagens:
